@@ -12,7 +12,10 @@ use Image;
 class CategoryController extends Controller
 {
    function category(){
-    return view('admin.category.index');
+    $all_category = Category::all();
+    return view('admin.category.index',[
+        'all_category' =>$all_category,
+    ]);
    }
 
    function store(CategoryRequest $request){

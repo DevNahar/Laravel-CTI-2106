@@ -13,9 +13,19 @@
             <div class="card-body">
                 <table class="table table-striped">
                     <tr>
+                        <th>SL</th>
                         <th>Category Name</th>
                         <th>Category Image</th>
+                        <th>Added By</th>
                     </tr>
+                    @foreach ($all_category as $key=> $category)
+                    <tr>
+                        <td>{{ ++$key }}</td>
+                        <td>{{ $category->category_name }}</td>
+                        <td><img width="50" src="{{asset('uploads/categories')}}/{{$category->category_image }}" alt=""> </td>
+                        <td>{{ $category->rel_to_user }}</td>
+                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
