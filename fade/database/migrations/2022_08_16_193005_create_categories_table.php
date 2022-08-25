@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('category_name');
             $table->string('category_image')->default('default.png');
             $table->integer('added_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

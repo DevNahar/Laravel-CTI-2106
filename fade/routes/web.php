@@ -51,4 +51,13 @@ Route::post('/photo/change', [UserController::class, 'changePhoto'])->name('phot
 //category
 Route::get('/category/list', [CategoryController::class, 'category'])->name('category');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/category/delete/{category_id}', [CategoryController::class,'category_delete'])->name('category.delete');
+//Hard Delete
+Route::get('/category/hard/delete/{category_id}', [CategoryController::class,'category_hard_delete'])->name('category.hard.delete');
+
+//Restore
+Route::get('/category/restore/{category_id}', [CategoryController::class,'category_restore'])->name('category.restore');
+
+//Edite
+Route::get('/category/edit', [CategoryController::class, 'category_edit'])->name('category.edit');
 
