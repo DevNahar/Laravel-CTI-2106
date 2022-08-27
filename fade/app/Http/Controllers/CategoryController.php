@@ -48,6 +48,9 @@ class CategoryController extends Controller
 
    //hard delete
    function category_hard_delete($category_id){
+    $trash_info = Category::onlyTrashed()->find($category_id);
+    $img_delete_path = public_path('uploads/categories/'. $trash_info->category_image);
+    unlink($img_delete_path);
     Category::onlyTrashed()->find($category_id)->forceDelete();
     return back()->with('category_hard_delete', 'Category  delete has been successfully');
     }
@@ -60,7 +63,37 @@ class CategoryController extends Controller
 
     //Edit
     function category_edit($category_id){
+        $category_info= Category::Find($category_id);
 
+        return view('admin.category.edit',[
+            'category_info'=> $category_info,
+        ]);
+
+    }
+
+    //update
+    function category_update(Request $request){
+        if($request->category_image == ''){
+            Category::find($request->category_id)->update([
+                'category_name' => $request->category_name,
+
+            ]);
+
+        }else{
+            $delete_img = Category::find($request->category_id);
+            $deleteimg_path = public_path('uploads/categories/'. $delete_img->category_image);
+            unlink($deleteimg_path);
+            $category_image= $request->category_image;
+            $extension = $category_image->getClientOriginalExtension();
+
+            $filename = $request->category_id . '.'. $extension;
+            Image::make($category_image)->save(public_path('uploads/categories/'.$filename));
+            Category::find($request->category_id)->update([
+                'category_name' => $request->category_name,
+                'category_image' => $filename,
+            ]);
+        }
+        // return back()->with('category_update', 'Category updated has been successfully ');
     }
 
 }

@@ -11,6 +11,12 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'category_name',
+
+    ];
+
+
     function rel_to_user(){
         return $this->belongsTo(User::class,'added_by');
     }

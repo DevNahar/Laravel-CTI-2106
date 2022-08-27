@@ -58,6 +58,9 @@ Route::get('/category/hard/delete/{category_id}', [CategoryController::class,'ca
 //Restore
 Route::get('/category/restore/{category_id}', [CategoryController::class,'category_restore'])->name('category.restore');
 
-//Edite
-Route::get('/category/edit', [CategoryController::class, 'category_edit'])->name('category.edit');
+//Edit
+Route::get('/category/edit/{category_id}', [CategoryController::class, 'category_edit'])->name('category.edit');
+
+//Update
+Route::post('/category/update',[CategoryController::class, 'category_update'])->name('category.update');
 

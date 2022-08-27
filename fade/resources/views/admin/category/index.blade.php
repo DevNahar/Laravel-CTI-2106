@@ -33,8 +33,8 @@
                         <td>{{ $category->rel_to_user->name }}</td>
                         <td>
 
-                            <a href="#" class="btn btn-primary btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                            <a href="{{ route('category.edit',$category->id) }}" class="btn btn-success btn-xs sharp"><i class="fa fa-trash"></i></a>
+                            <a href="{{ route('category.edit',$category->id) }}" class="btn btn-primary btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ route('category.delete',$category->id) }}" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
                             </td>
                     </tr>
                     @endforeach
