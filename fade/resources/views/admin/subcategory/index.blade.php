@@ -10,10 +10,22 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="card border border-primary">
-            <div class="card-header bg-primary"><h3 class="text-white"></h3>Subcategory List</div>
+            <div class="card-header bg-primary"><h3 class="text-white">Subcategory List</h3></div>
             <div class="card-body">
-                <table>
-                    <th></th>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Sl</th>
+                        <th>Category Name</th>
+                        <th>Subcategory Name</th>
+                    </tr>
+                    @foreach($allsubcategories as $key=> $subcategory)
+                    <tr>
+                        <td>{{ ++$key }}</td>
+                        <td></td>
+                        <td>{{ $subcategory->subcategory_name }}</td>
+
+                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
