@@ -87,13 +87,14 @@ class CategoryController extends Controller
             $extension = $category_image->getClientOriginalExtension();
 
             $filename = $request->category_id . '.'. $extension;
+
             Image::make($category_image)->save(public_path('uploads/categories/'.$filename));
             Category::find($request->category_id)->update([
                 'category_name' => $request->category_name,
                 'category_image' => $filename,
             ]);
         }
-        // return back()->with('category_update', 'Category updated has been successfully ');
+        return back()->with('category_update', 'Category updated has been successfully ');
     }
 
 }

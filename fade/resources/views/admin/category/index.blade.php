@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
-            <div class="card-header"><h3>Category List</h3> </div>
+            <div class="card-header bg-primary"><h3 class="text-white">Category List</h3> </div>
             <div class="card-body">
                 @if (session('category_delete'))
                 <div class="alert alert-success">{{ session('category_delete') }}</div>
@@ -17,7 +17,7 @@
             @if (session('category_restore'))
                     <div class="alert alert-success">{{ session('category_restore') }}</div>
                 @endif
-                <table class="table table-striped">
+                <table class="table table-striped ">
                     <tr>
                         <th>SL</th>
                         <th>Category Name</th>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-header"><h3>Trushed Category List</h3> </div>
+            <div class="card-header bg-primary"><h3 class="text-white">Trushed Category List</h3> </div>
             <div class="card-body">
                 @if (session('category_hard_delete'))
                     <div class="alert alert-success">{{ session('category_hard_delete') }}</div>
@@ -75,7 +75,7 @@
     </div>
     <div class="col-lg-4">
         <div class="card">
-            <div class="card-header"> <h3>Add Categary</h3> </div>
+            <div class="card-header bg-primary"> <h3 class="text-white">Add Categary</h3> </div>
             <div class="card-body">
                 @if (session('category_image'))
                         <div class="alert alert-success">{{ session('category_image') }}</div>

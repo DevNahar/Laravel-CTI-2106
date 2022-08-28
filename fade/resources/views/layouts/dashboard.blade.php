@@ -898,8 +898,15 @@
                             </li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                    <img src="{{ asset('/uploads/users') }}/{{ Auth::user()->profile_photo }}" width="10"
+                                    @if (Auth::user()->profile_photo == null)
+                                        <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+
+                                    @else
+                                         <img src="{{ asset('/uploads/users') }}/{{ Auth::user()->profile_photo }}" width="10"
                                         alt="hhh" />
+                                    @endif
+
+
                                     <div class="header-info">
                                         <span class="text-black"><strong>{{ Auth::user()->name }}</strong></span>
                                         <p class="fs-12 mb-0">Super Admin</p>
@@ -986,7 +993,8 @@
                     <span class="nav-text">Categories</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('category') }}">category list</a></li>
+                    <li><a href="{{ route('category') }}">Category List</a></li>
+                    <li><a href="{{ route('subcategory') }}">Subcategory List</a></li>
                 </ul>
             </li>
             {{-- category end --}}

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -48,7 +48,8 @@ Route::post('/name/change', [UserController::class, 'changeName'])->name('name.c
 Route::post('/password/change', [UserController::class, 'changePass'])->name('pass.change');
 Route::post('/photo/change', [UserController::class, 'changePhoto'])->name('photo.change');
 
-//category
+//category start
+
 Route::get('/category/list', [CategoryController::class, 'category'])->name('category');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 Route::get('/category/delete/{category_id}', [CategoryController::class,'category_delete'])->name('category.delete');
@@ -63,4 +64,14 @@ Route::get('/category/edit/{category_id}', [CategoryController::class, 'category
 
 //Update
 Route::post('/category/update',[CategoryController::class, 'category_update'])->name('category.update');
+
+//category end
+
+//subcategory start
+
+Route::get('/subcategory',[SubcategoryController::class, 'subcategory'])->name('subcategory');
+Route::post('/subcategory/store', [SubcategoryController::class, 'subcategory_store'])->name('subcategory.store');
+
+//subcategory end
+
 

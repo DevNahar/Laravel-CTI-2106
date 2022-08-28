@@ -11,12 +11,12 @@
 <div class="row">
     <div class="col-lg-6 m-auto">
         <div class="card">
-            <div class="card-header"> <h3>Edit Categary</h3> </div>
+            <div class="card-header bg-primary "> <h3 class="text-white">Edit Categary</h3> </div>
             <div class="card-body">
-                {{-- @if (session('category_image'))
-                        <div class="alert alert-success">{{ session('category_image') }}</div>
+                @if (session('category_update'))
+                        <div class="alert alert-success">{{ session('category_update') }}</div>
 
-                    @endif --}}
+                    @endif
                 <form action="{{ route('category.update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">

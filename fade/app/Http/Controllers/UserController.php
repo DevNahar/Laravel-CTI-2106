@@ -72,7 +72,7 @@ class UserController extends Controller
 
     function changePhoto(Request $request){
        $profile_photo = $request->profile_photo;
-       if(Auth::user()->profile_photo != 'default.jpg'){
+       if(Auth::user()->profile_photo != null){
             $path = public_path('uploads/users/'. Auth::user()->profile_photo);
             unlink($path);
             $extension = $profile_photo->getClientOriginalExtension();
