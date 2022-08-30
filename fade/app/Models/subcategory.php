@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class subcategory extends Model
 {
     use HasFactory;
+
+    function rel_to_category(){
+       return $this->belongsTo(Category::class,'category_id');
+    }
 }

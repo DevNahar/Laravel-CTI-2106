@@ -17,12 +17,17 @@
                         <th>Sl</th>
                         <th>Category Name</th>
                         <th>Subcategory Name</th>
+                        <th>Action</th>
                     </tr>
                     @foreach($allsubcategories as $key=> $subcategory)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td></td>
+                        <td>{{ $subcategory->rel_to_category->category_name }}</td>
                         <td>{{ $subcategory->subcategory_name }}</td>
+                        <td>
+                            <a href="" class="btn btn-info btn-xs sharp"><i class="fa fa-pencil"></i></a>
+                            <a href="" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
+                        </td>
 
                     </tr>
                     @endforeach
@@ -47,15 +52,21 @@
                         <option  value="{{ $category->id}}">{{ $category->category_name }}</option>
                         @endforeach
                        </select>
+
                     </div>
-                    <div class="form-group">
+                    @error('category_id')
+                        <strong class="text-danger">{{ $message }}</strong>
+                       @enderror
+                    <div class="form-group mt-3">
                         <label for="" class="form-label">Subcategory Name</label>
                         <input type="text" name="subcategory_name" class="form-control">
+                        @error('subcategory_name')
+                        <strong class="text-danger">{{ $message }}</strong>
+                       @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="" class="form-label">Subcategory Image</label>
-                        <input type="file" name="subcategory_image" class="form-control">
-                    </div> --}}
+                    @if(session('exists'))
+                    <div class="alert alert-success">{{ session('exists') }}</div>
+                    @endif
                     <div class="mt-4">
                         <button type="submit" class="btn btn-primary ">Add Subcategory</button>
                     </div>
