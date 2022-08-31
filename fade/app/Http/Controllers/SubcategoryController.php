@@ -38,4 +38,10 @@ class SubcategoryController extends Controller
         return back()->with('subcategoryadd','Subcategory Added!!');
 
    }
+
+   //edite
+   function subcategory_edit($subcategory_id){
+
+       return  view('admin.subcategory.edit');
+   }
 }

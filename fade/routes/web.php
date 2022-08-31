@@ -71,6 +71,9 @@ Route::post('/category/update',[CategoryController::class, 'category_update'])->
 
 Route::get('/subcategory',[SubcategoryController::class, 'subcategory'])->name('subcategory');
 Route::post('/subcategory/store', [SubcategoryController::class, 'subcategory_store'])->name('subcategory.store');
+//Subcategory Edit
+Route::get('/subcategory/edit/{subcategory_id}',[SubcategoryController::class,'subcategory_edit'])->name('subcategory.edit');
+Route::post('/subcategory/update',[SubcategoryController::class,'subcategory_update'])->name('subcategory.update');
 
 //subcategory end
 
