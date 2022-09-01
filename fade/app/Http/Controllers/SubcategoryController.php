@@ -41,7 +41,29 @@ class SubcategoryController extends Controller
 
    //edite
    function subcategory_edit($subcategory_id){
-
-       return  view('admin.subcategory.edit');
+        $categories = Category::all();
+        // return $categories;
+        $subcategories = Subcategory::find($subcategory_id);
+        // return $subcategories;
+       return  view('admin.subcategory.edit',[
+        'categories' => $categories ,
+        'allsubcategories' => $subcategories ,
+       ]);
    }
+
+//    if(Subcategory::where('category_id',$subrequest->category_id)->where('subcategory_name',$subrequest->subcategory_name)->exists()){
+//     return back()->with('exists', 'Subcategory name already exist in this category');
+// }
+
+   //update
+   function subcategory_update(Request $subupdate){
+    // return $subupdate;
+        if(Subcategory::where('category_id',$subupdate->subcategory_id)->where('subcategory_name', $subupdate->subcategory_name)->exists()){
+
+            if(Subcategory::where('category_id',$subupdate->category_id)->where('subcategory_name', $subupdate->subcategory_name)->exists()){
+                return back()->with('exists', 'Subcategory name already exist in this category');
+            }
+        }
+    }
+
 }
