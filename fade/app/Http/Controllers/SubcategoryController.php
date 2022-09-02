@@ -51,19 +51,29 @@ class SubcategoryController extends Controller
        ]);
    }
 
-//    if(Subcategory::where('category_id',$subrequest->category_id)->where('subcategory_name',$subrequest->subcategory_name)->exists()){
-//     return back()->with('exists', 'Subcategory name already exist in this category');
-// }
+
 
    //update
    function subcategory_update(Request $subupdate){
     // return $subupdate;
-        if(Subcategory::where('category_id',$subupdate->subcategory_id)->where('subcategory_name', $subupdate->subcategory_name)->exists()){
-
-            if(Subcategory::where('category_id',$subupdate->category_id)->where('subcategory_name', $subupdate->subcategory_name)->exists()){
-                return back()->with('exists', 'Subcategory name already exist in this category');
-            }
+        if(Subcategory::where('category_id',$subupdate->category_id)->where('subcategory_name', $subupdate->subcategory_name)->exists()){
+             return back()->with('exists', 'Subcategory name already exist in this category');
         }
+        else{
+            Subcategory::where('id',$subupdate->subcategory_id)->update([
+                'category_id'=> $subupdate->category_id,
+                'subcategory_name'=> $subupdate->subcategory_name,
+            ]);
+            return redirect('/subcategory')->with('subupdate', 'Subcategory has been updated');
+        }
+    }
+
+
+    //subcategory delete
+
+    function subcategory_delete($subcategory_id){
+        Subcategory::find($subcategory_id)->delete();
+        return back()->with('subcategory_delete', 'Sobcategory softdelete has been successfully');
     }
 
 }

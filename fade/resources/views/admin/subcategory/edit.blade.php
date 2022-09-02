@@ -20,7 +20,7 @@
                 <form action="{{ route('subcategory.update') }}" method="post">
                     @csrf
                     <div class="mb-4">
-
+                        <input type="hidden" name="subcategory_id" value="{{ $allsubcategories->id }}">
                        <select name="category_id" id="">
                         <option  value="">--Select Category--</option>
                         @foreach($categories as $category)

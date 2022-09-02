@@ -41,11 +41,16 @@
         <!--**********************************
             Nav header start
         ***********************************-->
+
+
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('/backend/images/logo.png') }}" alt="logo nai">
-                <img class="logo-compact" src=" {{ Auth::user()->profile_photo }} " alt="logo-compact">
-                <img class="brand-title" src="{{ Auth::user()->name }} " alt="brand-title">
+                @if ( Auth::user()->profile_photo )
+                <img class="logo-compact" src=" {{ asset('/uploads/users') }}/{{ Auth::user()->profile_photo }}" alt="logo-compact">
+                @endif
+
+                    <span class="text-black ml-3"><strong>{{ Auth::user()->name }}</strong></span>
+
             </a>
 
             <div class="nav-control">
@@ -998,6 +1003,22 @@
                 </ul>
             </li>
             {{-- category end --}}
+
+
+                 {{-- Product start --}}
+
+                 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-user"></i>
+                    <span class="nav-text">Products</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('add.product') }}">Add Product</a></li>
+                    <li><a href="">Product List</a></li>
+                    {{-- <li><a href="{{ route('product') }}">Product List</a></li> --}}
+
+                </ul>
+            </li>
+            {{-- product end --}}
                     {{-- app --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-television"></i>

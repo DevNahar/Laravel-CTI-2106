@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
@@ -75,7 +76,12 @@ Route::post('/subcategory/store', [SubcategoryController::class, 'subcategory_st
 Route::get('/subcategory/edit/{subcategory_id}',[SubcategoryController::class,'subcategory_edit'])->name('subcategory.edit');
 //Subcategory Update
 Route::post('/subcategory/update',[SubcategoryController::class,'subcategory_update'])->name('subcategory.update');
+Route::get('/subcategory/delete/{subcategory_id}', [SubcategoryController::class,'subcategory_delete'])->name('subcategory.delete');
 
 //subcategory end
+
+//product start
+Route::get('add/product', [ProductController::class, 'add_product'])->name('add.product');
+//product end
 
 

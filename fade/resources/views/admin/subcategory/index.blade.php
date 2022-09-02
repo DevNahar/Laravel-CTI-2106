@@ -12,6 +12,14 @@
         <div class="card border border-primary">
             <div class="card-header bg-primary"><h3 class="text-white">Subcategory List</h3></div>
             <div class="card-body">
+                @if (session('subcategory_delete'))
+        <div class="alert alert-success">{{ session('subcategory_delete') }}</div>
+
+        @endif
+            @if (session('subupdate'))
+            <div class="alert alert-success">{{ session('subupdate') }}</div>
+
+            @endif
                 <table class="table table-striped">
                     <tr>
                         <th>Sl</th>
@@ -26,7 +34,7 @@
                         <td>{{ $subcategory->subcategory_name }}</td>
                         <td>
                             <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-info btn-xs sharp"><i class="fa fa-pencil"></i></a>
-                            <a href="" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
+                            <a href="{{ route('subcategory.delete', $subcategory->id )}}" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
                         </td>
 
                     </tr>
@@ -75,4 +83,36 @@
         </div>
     </div>
 </div>
+
+
+{{-- softdelete --}}
+<div class="col-lg-8">
+    <div class="card border border-primary">
+        <div class="card-header bg-primary"><h3 class="text-white">Soft Delete Subcategory List</h3></div>
+        <div class="card-body">
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Sl</th>
+                    <th>Category Name</th>
+                    <th>Subcategory Name</th>
+                    <th>Action</th>
+                </tr>
+                @foreach($allsubcategories as $key=> $subcategory)
+                <tr>
+                    <td>{{ ++$key }}</td>
+                    <td>{{ $subcategory->rel_to_category->category_name }}</td>
+                    <td>{{ $subcategory->subcategory_name }}</td>
+                    <td>
+                        <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-info btn-xs sharp"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ route('subcategory.delete', $subcategory->id )}}" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
+                    </td>
+
+                </tr>
+                @endforeach
+            </table>
+        </div>
+    </div>
+</div>
+
 @endsection
