@@ -16,4 +16,15 @@ class ProductController extends Controller
             'subcategories' => $subcategories,
         ]);
     }
+
+    function getsubcategory(Request $c_id_received){
+        $subcategories= Subcategory::where('category_id',$c_id_received->c_id)->get();
+        $str= "<option>--Select Subcategory--</option>";
+        foreach($subcategories as $subcategory){
+
+            $str .= "<option value='$subcategory->id'>$subcategory->subcategory_name</option>";
+
+        }
+        echo $str;
+    }
 }
