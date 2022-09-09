@@ -46,9 +46,17 @@
 
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                @if ( Auth::user()->profile_photo )
+                @if (Auth::user()->profile_photo == null)
+                <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+
+            @else
+                 <img class="logo-compact" src="{{ asset('/uploads/users') }}/{{ Auth::user()->profile_photo }}" width="50"
+                alt="hhh" />
+            @endif
+
+                {{-- @if ( Auth::user()->profile_photo )
                 <img class="logo-compact" src=" {{ asset('/uploads/users') }}/{{ Auth::user()->profile_photo }}" alt="logo-compact">
-                @endif
+                @endif --}}
 
                     <span class="text-black ml-3"><strong>{{ Auth::user()->name }}</strong></span>
 
@@ -1105,6 +1113,7 @@
 
     <!-- Dashboard 1 -->
     <script src="{{ asset('/backend/js/dashboard/dashboard-1.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function carouselReview() {
             /*  testimonial one function by = owl.carousel.js */

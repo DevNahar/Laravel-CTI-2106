@@ -11,7 +11,10 @@
         <div class="card border border-primary">
             <div class="card-header bg-primary"><h3 class="text-white"> Add Product</h3></div>
             <div class="card-body">
-                <form action="" method="post">
+                {{-- @if (session('preview'))
+                    <div class="alert alert-success">{{ session('preview') }}</div>
+                @endif --}}
+                <form action="{{  route('product.store')  }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6">
@@ -28,9 +31,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                {{-- <label class="form-label">Category Name</label>
-                                <input type="text" name="category_name"  class="form-control">  --}}
-                                <select name="category_id" id="subcategory_id" class="form-control">
+
+                                <select name="subcategory_id" id="subcategory_id" class="form-control">
                                     <option value="">--Select Subcategory--</option>
                                     {{-- @foreach ($subcategories as $subcategory)
                                     <option value="">{{ $subcategory->subcategory_name }}</option>
@@ -125,4 +127,19 @@
     });
 
 </script>
+
+{{-- sweetAlert --}}
+
+@if (session('preview'))
+<script>
+    Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Preview image Added!!',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
+{{-- sweetAlert --}}
 @endsection
