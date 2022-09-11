@@ -57,7 +57,7 @@ class ProductController extends Controller
         $preview= $product_data->preview;
         $extension = $preview->getClientOriginalextension();
         $filename = $slug.'.'.$extension;
-        Image::make($preview)->save(public_path('/uploads/product_previews/'.$filename));
+        Image::make($preview)->save(public_path('/uploads/products/preview_image/'.$filename));
         Product::find($product_id)->update([
             'preview'=>$product_data->preview,
         ]);
