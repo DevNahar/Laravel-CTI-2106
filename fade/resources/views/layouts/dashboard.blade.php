@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Gymove - Fitness Bootstrap Admin Dashboard</title>
     <!-- Favicon icon -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/backend/images/favicon.png') }}">
     <link rel="stylesheet" href="./vendor/chartist/css/chartist.min.css">
     <link href="{{ asset('/backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
@@ -1022,7 +1023,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('add.product') }}">Add Product</a></li>
-                    <li><a href="">Product List</a></li>
+                    <li><a href="{{ route('product.list') }}">Product List</a></li>
                     {{-- <li><a href="{{ route('product') }}">Product List</a></li> --}}
 
                 </ul>
@@ -1112,6 +1113,7 @@
     <script src="{{ asset('/backend/vendor/apexchart/apexchart.js') }}"></script>
 
     <!-- Dashboard 1 -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="{{ asset('/backend/js/dashboard/dashboard-1.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

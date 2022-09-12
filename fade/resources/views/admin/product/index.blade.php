@@ -74,7 +74,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label class="form-label">Long Description</label>
-                              <div><textarea name="long_desp" class="form-control" cols="85" rows="5"></textarea>
+                              <div><textarea name="long_desp" id="summernote" class="form-control" cols="85" rows="5"></textarea>
                               </div></div>
                         </div>
                         <div class="col-lg-6">
@@ -86,7 +86,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-label">Thumbnails Image</label>
-                                <input type="file" name="thumbnails"  class="form-control">
+                                <input type="file" name="thumbnails[]" multiple  class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-12 mt-4" >
@@ -103,6 +103,11 @@
 @endsection
 
 @section('footer_script')
+<script>
+    $(document).ready(function() {
+  $('#summernote').summernote();
+});
+    </script>
 <script>
     $('#category_id').change(function(){
         let categoryValue = $(this).val();
@@ -139,7 +144,7 @@
   showConfirmButton: false,
   timer: 1500
 })
-</script>
+</>
 @endif
 {{-- sweetAlert --}}
 @endsection

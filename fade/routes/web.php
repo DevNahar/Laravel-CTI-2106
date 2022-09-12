@@ -84,6 +84,7 @@ Route::get('/subcategory/delete/{subcategory_id}', [SubcategoryController::class
 Route::get('add/product', [ProductController::class, 'add_product'])->name('add.product');
 Route::post('/getsubcategory', [ProductController::class, 'getsubcategory']);
 Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
+Route::get('/product/list', [ProductController::class, 'product_list'])->name('product.list');
 //product end
 
 

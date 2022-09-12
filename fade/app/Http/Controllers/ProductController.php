@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Image;
+use Carbon\Carbon;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Thumbnail;
 use App\Models\subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -59,8 +61,31 @@ class ProductController extends Controller
         $filename = $slug.'.'.$extension;
         Image::make($preview)->save(public_path('/uploads/products/preview_image/'.$filename));
         Product::find($product_id)->update([
-            'preview'=>$product_data->preview,
+            'preview'=>$filename,
         ]);
+        $thumbnails = $product_data->thumbnails;
+
+         foreach($thumbnails as $thumbnail){
+            $thumbnail_extension = $thumbnail->getClientOriginalextension();
+            $thum_filename =$name .'-'. random_int(1000,100000).'.'.$thumbnail_extension;
+
+           Image::make($thumbnail)->save(public_path('/uploads/products/thumbnails/'. $thum_filename));
+
+           Thumbnail::insert([
+            'product_id'=> $product_id,
+            'thumbnail' =>$thum_filename,
+            'created_at' =>Carbon::now(),
+
+           ]);
+
+        }
+
         return back()->with('preview','Preview image Added!!');
+    }
+
+
+    //product_list
+    function product_list(){
+        view('admin.product.productList');
     }
 }
