@@ -86,6 +86,14 @@ class ProductController extends Controller
 
     //product_list
     function product_list(){
-        view('admin.product.productList');
+        $all_products = Product::all();
+        return view('admin.product.productList',[
+            'products'=>$all_products,
+        ]);
+
+    }
+
+    function color_size(){
+        return view('admin.product.color_size');
     }
 }

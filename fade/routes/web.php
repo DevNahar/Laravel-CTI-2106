@@ -85,6 +85,7 @@ Route::get('add/product', [ProductController::class, 'add_product'])->name('add.
 Route::post('/getsubcategory', [ProductController::class, 'getsubcategory']);
 Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
 Route::get('/product/list', [ProductController::class, 'product_list'])->name('product.list');
+Route::get('/product/color/size', [ProductController::class, 'color_size'])->name('add.color.size');
 //product end
 
 

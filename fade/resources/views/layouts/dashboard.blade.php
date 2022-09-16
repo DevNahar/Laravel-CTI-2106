@@ -1024,7 +1024,7 @@
                 <ul aria-expanded="false">
                     <li><a href="{{ route('add.product') }}">Add Product</a></li>
                     <li><a href="{{ route('product.list') }}">Product List</a></li>
-                    {{-- <li><a href="{{ route('product') }}">Product List</a></li> --}}
+                    <li><a href="{{ route('add.color.size') }}">Add Color & Size</a></li>
 
                 </ul>
             </li>
