@@ -46,7 +46,7 @@
                             {{-- <td>{!! $product->long_desp !!}</td> --}}
                             <td><img width="50" src="{{ asset('/uploads/products/preview_image') }}/{{ $product->preview }}" alt=""></td>
                             <td style="display: flex;" >
-                                <a href="#" class="btn btn-primary btn-xs sharp mr-1"><i class="fa fa-archive"></i></a>
+                                <a href="{{ route('inventory',$product->id) }}" class="btn btn-primary btn-xs sharp mr-1"><i class="fa fa-archive"></i></a>
                                 <a href="#" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
                             </td>
 

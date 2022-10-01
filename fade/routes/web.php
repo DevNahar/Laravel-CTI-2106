@@ -31,13 +31,20 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-// Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/home', [HomeController::class, 'home'])->name('home');
+
+//frontend
+Route::get('/', [FrontendController::class, 'index']) ;
+Route::get('/product/details', [FrontendController::class, 'p_details'])->name('product.details');
+
+//dashboard
+ Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
 
 
-Route::get('/', [FrontendController::class, 'welcome'])->name('welcome') ;
-Route::get('/about', [FrontendController::class, 'about'])->name('about');
-Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+ 
+// Route::get('/about', [FrontendController::class, 'about'])->name('about');
+// Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 
 //usercontroller
 Route::get('/users',[UserController::class, 'users'])->name('users');
@@ -86,6 +93,10 @@ Route::post('/getsubcategory', [ProductController::class, 'getsubcategory']);
 Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
 Route::get('/product/list', [ProductController::class, 'product_list'])->name('product.list');
 Route::get('/product/color/size', [ProductController::class, 'color_size'])->name('add.color.size');
+Route::post('/add/color', [ProductController::class, 'add_color'])->name('add.color');
+Route::post('/add/size', [ProductController::class, 'add_size'])->name('add.size');
+Route::get('inventory/{id}', [ProductController::class, 'inventory'])->name('inventory');
+Route::post('store/inventory/{id}', [ProductController::class, 'addinventory'])->name('store.inventory');
 //product end
 
 
