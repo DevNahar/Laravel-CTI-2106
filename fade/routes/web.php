@@ -33,13 +33,14 @@ Auth::routes();
 
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+//dashboard
+Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
 
 //frontend
-Route::get('/', [FrontendController::class, 'index']) ;
-Route::get('/product/details', [FrontendController::class, 'p_details'])->name('product.details');
+Route::get('/', [FrontendController::class, 'index'])->name('index') ;
+Route::get('/product/details/{productSlug}', [FrontendController::class, 'p_details'])->name('product.details');
 
-//dashboard
- Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
+
 
 
  

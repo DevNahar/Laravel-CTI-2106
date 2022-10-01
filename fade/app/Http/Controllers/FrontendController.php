@@ -29,7 +29,10 @@ class FrontendController extends Controller
         ]);
     }
 
-    function p_details(){
-        return view('frontend.product_details');
+    function p_details($productSlug){
+      $productSlug= Product::where('slug',$productSlug)->get();
+        return view('frontend.product_details',[
+            'productSlug' => $productSlug,
+        ]);
     }
 }

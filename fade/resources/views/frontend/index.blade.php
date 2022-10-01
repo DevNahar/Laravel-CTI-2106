@@ -140,8 +140,8 @@
                                             </div>
                                             <div class="details" >
                                                 
-                                                <h4 ><a href="{{ route('product.details') }}">{{ $product->product_name }}</a></h4>
-                                                <p ><a href="{{ route('product.details') }}">{{ $product->short_desp }}</a></p>
+                                                <h4 ><a href="{{ route('product.details',$product->slug) }}">{{ $product->product_name }}</a></h4>
+                                                <p ><a href="{{ route('product.details',$product->slug) }}">{{ $product->short_desp }}</a></p>
                                                 <div class="rating">
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
@@ -335,8 +335,8 @@
                                             <img src="{{ asset('uploads/products\preview_image/'.$arrival->preview) }}" alt>
                                         </div>
                                         <div class="details">
-                                            <h4><a href="{{ route('product.details') }}">{{ $arrival->product_name }}</a></h4>
-                                            <p><a href="{{ route('product.details') }}">{{ $arrival->short_desp }}</a></p>
+                                            <h4><a href="{{ route('product.details',$product->slug) }}">{{ $arrival->product_name }}</a></h4>
+                                            <p><a href="{{ route('product.details',$product->slug) }}">{{ $arrival->short_desp }}</a></p>
                                             <span class="price">
                                                 <ins>
                                                     <span class="woocommerce-Price-amount amount">
