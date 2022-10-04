@@ -30,9 +30,10 @@ class FrontendController extends Controller
     }
 
     function p_details($productSlug){
-      $productSlug= Product::where('slug',$productSlug)->get();
+      $productSluginfo= Product::where('slug',$productSlug)->get();
+        
         return view('frontend.product_details',[
-            'productSlug' => $productSlug,
+            'productSluginfo' => $productSluginfo,
         ]);
     }
 }

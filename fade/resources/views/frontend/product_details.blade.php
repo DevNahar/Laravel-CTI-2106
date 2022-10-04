@@ -78,11 +78,11 @@
 
                         <div class="col-lg-6">
                             <div class="product_details_content">
-                                <h2 class="item_title">CURREN 8109 Watches</h2>
-                                <p>It is a long established fact that a reader will be distracted eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate</p>
+                                <h2 class="item_title">{{ $productSluginfo->first()->product_name }}</h2>
+                                <p>{{ $productSluginfo->first()->short_desp }}</p>
                                 <div class="item_review">
                                     <ul class="rating_star ul_li">
-                                        <li><i class="fas fa-star"></i>></li>
+                                        <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
                                         <li><i class="fas fa-star"></i></li>
@@ -92,8 +92,12 @@
                                 </div>
 
                                 <div class="item_price">
-                                    <span>$620.00</span>
-                                    <del>$720.00</del>
+                                    <span>TK {{ $productSluginfo->first()->after_discount }}</span>
+                                    @if($productSluginfo->first()->discount)
+                                    <del>TK {{ $productSluginfo->first()->product_price }}</del>
+                                    @else
+                                    @endif
+                                    
                                 </div>
                                 <hr>
 
@@ -169,10 +173,8 @@
 
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="description_tab" role="tabpanel">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                <p class="mb-0">
-                                Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                </p>
+                                <p>{!! $productSluginfo->first()->long_desp !!}</p>
+                                
                             </div>
 
                             <div class="tab-pane fade" id="additional_information_tab" role="tabpanel">
