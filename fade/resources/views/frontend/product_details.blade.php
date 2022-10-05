@@ -21,57 +21,23 @@
                         <div class="col col-lg-6">
                             <div class="product_details_image">
                                 <div class="details_image_carousel">
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_1.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_2.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_3.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_4.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_1.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_2.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_3.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_4.png" alt="image_not_found">
-                                    </div>
+                                    
+                                    @foreach ($thumbnails as $thumbnail)
+                                        <div class="slider_item">
+                                            <img src="{{ asset('uploads/products/thumbnails/'.$thumbnail->thumbnail) }}" alt="image_not_found">
+                                        </div>
+                                     @endforeach                                   
+                                    
+                                    
                                 </div>
 
                                 <div class="details_image_carousel_nav">
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_1.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_2.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_3.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_4.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_1.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_2.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_3.png" alt="image_not_found">
-                                    </div>
-                                    <div class="slider_item">
-                                        <img src="assets/images/details/product_details_img_4.png" alt="image_not_found">
-                                    </div>
+                                    @foreach ($thumbnails as $thumbnail)
+                                        <div class="slider_item">
+                                            <img src="{{ asset('uploads/products/thumbnails/'.$thumbnail->thumbnail) }}" alt="image_not_found">
+                                        </div>
+                                     @endforeach
+                                    
                                 </div>
                             </div>
                         </div>
@@ -106,7 +72,7 @@
                                         <div class="row">
                                             <div class="col col-md-6">
                                                 <div class="select_option clearfix">
-                                                    <h4 class="input_title">Size *</h4>
+                                                    <h4 class="input_title">Color *</h4>
                                                     <select>
                                                         <option data-display="- Please select -">Choose A Option</option>
                                                         <option value="1">Some option</option>
@@ -118,7 +84,7 @@
                                             </div>
                                             <div class="col col-md-6">
                                                 <div class="select_option clearfix">
-                                                    <h4 class="input_title">Color *</h4>
+                                                    <h4 class="input_title">Size *</h4>
                                                     <select>
                                                         <option data-display="- Please select -">Choose A Option</option>
                                                         <option value="1">Some option</option>
@@ -311,130 +277,41 @@
                                     <h3>Related products</h3>
                                     <div class="view-all"><a href="#">View all<i class="fal fa-long-arrow-right"></i></a></div>
                                 </div>
-                                <div class="product-area clearfix">
-                                    <div class="grid">
-                                        <div class="product-pic">
-                                            <img src="assets/images/shop/product_img_12.png" alt>
+                                <div class="product-area row clearfix">
+                                    @forelse ($related_products as $related_product)
+                                                                      
+                                        <div class="grid col-lg-3">
+                                            <div class="product-pic">
+                                                <img src="{{ asset('uploads\products\preview_image/'.$related_product->preview) }}" alt>
 
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="#">Macbook Pro</a></h4>
-                                            <p><a href="#">Apple MacBook Pro13.3″ Laptop with Touch ID </a></p>
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
                                             </div>
-                                            <span class="price">
-                                                <ins>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>471.48
-                                                        </bdi>
-                                                    </span>
-                                                </ins>
-                                            </span>
-                                            <div class="add-cart-area">
-                                                <button class="add-to-cart">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="product-pic">
-                                            <img src="assets/images/shop/product-img-21.png" alt>
-                                            <span class="theme-badge">Sale</span>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="#">Apple Watch</a></h4>
-                                            <p><a href="#">Apple Watch Series 7 case Pair any band </a></p>
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </div>
-                                            <span class="price">
-                                                <ins>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>471.48
-                                                        </bdi>
-                                                    </span>
-                                                </ins>
-                                            </span>
-                                            <div class="add-cart-area">
-                                                <button class="add-to-cart">Add to cart</button>
+                                            <div class="details">
+                                                <h4><a href="{{ route('product.details',$related_product->slug) }}">{{ $related_product->product_name }}</a></h4>
+                                                <p><a href="{{ route('product.details',$related_product->slug) }}">{{ $related_product->short_desp }} </a></p>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                                <span class="{{ $related_product->short_desp }}">
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <bdi>
+                                                                <span class="woocommerce-Price-currencySymbol">TK </span>{{ $related_product->after_discount}}
+                                                            </bdi>
+                                                        </span>
+                                                    </ins>
+                                                </span>
+                                                <div class="add-cart-area">
+                                                    <button class="add-to-cart">Add to cart</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="product-pic">
-                                            <img src="assets/images/shop/product-img-22.png" alt>
-                                            <span class="theme-badge-2">12% off</span>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="#">Mac Mini</a></h4>
-                                            <p><a href="#">Apple MacBook Pro13.3″ Laptop with Touch ID </a></p>
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </div>
-                                            <span class="price">
-                                                <ins>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>471.48
-                                                        </bdi>
-                                                    </span>
-                                                </ins>
-                                                <del aria-hidden="true">
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>904.21
-                                                        </bdi>
-                                                    </span>
-                                                </del>
-                                            </span>
-                                            <div class="add-cart-area">
-                                                <button class="add-to-cart">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="product-pic">
-                                            <img src="assets/images/shop/product-img-23.png" alt>
-                                            <span class="theme-badge">Sale</span>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="#">iPad mini</a></h4>
-                                            <p><a href="#">The ultimate iPad experience all over the world </a></p>
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </div>
-                                            <span class="price">
-                                                <ins>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>471.48
-                                                        </bdi>
-                                                    </span>
-                                                </ins>
-                                            </span>
-                                            <div class="add-cart-area">
-                                                <button class="add-to-cart">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @empty
+                                        <h4>No Product Data Found</h4>
+                                    @endforelse
                                 </div>
                             </div>        
                         </div>

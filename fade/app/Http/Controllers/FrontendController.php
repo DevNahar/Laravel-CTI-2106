@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Thumbnail;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -31,9 +32,14 @@ class FrontendController extends Controller
 
     function p_details($productSlug){
       $productSluginfo= Product::where('slug',$productSlug)->get();
+        $thumbnails = Thumbnail::where('product_id',$productSluginfo->first()->id)->get();
+        $related_products = Product::where('category_id', $productSluginfo->first()->category_id)-> where('id', '!=', $productSluginfo->first()->id)->get();
         
+    
         return view('frontend.product_details',[
             'productSluginfo' => $productSluginfo,
+            'thumbnails'=> $thumbnails,
+            'related_products' => $related_products,
         ]);
     }
 }

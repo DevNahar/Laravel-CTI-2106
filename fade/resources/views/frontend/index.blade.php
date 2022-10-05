@@ -133,7 +133,7 @@
                                     @foreach ($all_product as $product)
                                         <div class="grid col-lg-4">
                                             <div class="product-pic"  >
-                                                <img src="{{ asset('uploads/products/preview_image/'.$product->preview) }}" alt>
+                                                <a href="{{ route('product.details',$product->slug) }}"><img src="{{ asset('uploads/products/preview_image/'.$product->preview) }}" alt></a>
                                                 @if ($product->discount)
                                                  <span class="theme-badge-2">{{ $product->discount }}% off</span>
                                                 @endif
