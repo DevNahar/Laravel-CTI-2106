@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+
 
     <title>Stowaa -  Ecommerce HTML Template</title>
     <link rel="shortcut icon" href="{{ asset('frontend/images/logo/favourite_icon_1.png') }}">
@@ -44,7 +46,7 @@
 
     <!-- body_wrap - start -->
     <div class="body_wrap">
-        
+
         <!-- backtotop - start -->
         <div class="backtotop">
             <a href="#" class="scroll">
@@ -57,7 +59,7 @@
         <div id="preloader"></div>
         <!-- preloader - end -->
 
-        
+
         <!-- header_section - start
         ================================================== -->
         <header class="header_section {{ Route::CurrentRouteName() == 'index'? 'header-style-no-collapse': 'header-style-3' }}">
@@ -80,7 +82,7 @@
                                         </select>
                                     </div>
                                 </li>
-                                
+
                             </ul>
                         </div>
                         <div class="col col-md-6">
@@ -104,13 +106,13 @@
                             <form action="#">
                                 <div class="advance_serach">
                                     <div class="select_option mb-0 clearfix">
-                                        <select>
+                                        <select class="select">
                                             <option data-display="All Categories">Select A Category</option>
                                             @foreach (App\Models\Category::all() as $category)
-                                               <option value="{{ $category->category_id }}">{{ $category->category_name }}</option> 
+                                               <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
                                             @endforeach
-                                            
-                                            
+
+
                                         </select>
                                     </div>
                                     <div class="form_item">
@@ -186,9 +188,11 @@
                         <div class="col col-md-3">
                             <ul class="header_icons_group ul_li_right">
                                  <li>
-                                    <a href="#">Jon Doe</a>
+
+                                    <a href="{{ route('customer.login.register') }}">Login/Register</a>
+                                    
                                 </li>
-                                
+
                                 <li>
                                     <a href="account.html">
                                         <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" stroke="#051d43" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#2329D6"> <title id="personIconTitle">Person</title> <path d="M4,20 C4,17 8,17 10,15 C11,14 8,14 8,9 C8,5.667 9.333,4 12,4 C14.667,4 16,5.667 16,9 C16,14 13,14 14,15 C16,17 20,17 20,20"/> </svg>
@@ -202,11 +206,11 @@
         </header>
         <!-- header_section - end
         ================================================== -->
-        
+
         <!-- main body - start
         ================================================== -->
         <main>
-            
+
             <!-- sidebar cart - start
             ================================================== -->
             <div class="sidebar-menu-wrapper">
@@ -277,7 +281,7 @@
 
 
             @yield('content')
-            
+
             <!-- newsletter_section - start
             ================================================== -->
             <section class="newsletter_section">
@@ -300,11 +304,11 @@
             </section>
             <!-- newsletter_section - end
             ================================================== -->
-        
+
         </main>
         <!-- main body - end
         ================================================== -->
-        
+
         <!-- footer_section - start
         ================================================== -->
         <footer class="footer_section">
@@ -327,7 +331,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="col col-lg-2 col-md-3 col-sm-6">
                             <div class="footer_widget footer_useful_links">
                                 <h3 class="footer_widget_title text-uppercase">Quick Links</h3>
@@ -340,7 +344,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="col col-lg-2 col-md-3 col-sm-6">
                             <div class="footer_widget footer_useful_links">
                                 <h3 class="footer_widget_title text-uppercase">Custom area</h3>
@@ -353,7 +357,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="col col-lg-4 col-md-6 col-sm-6">
                             <div class="footer_widget footer_contact">
                                 <h3 class="footer_widget_title text-uppercase">Contact Onfo</h3>
@@ -383,7 +387,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer_bottom">
                 <div class="container">
                     <div class="row align-items-center">
@@ -392,7 +396,7 @@
                                 ©2021 <a href="#!">stowaa</a>. All Rights Reserved.
                             </p>
                         </div>
-                        
+
                         <div class="col col-md-6">
                             <div class="payment_method">
                                 <h4>Payment:</h4>
@@ -423,6 +427,9 @@
 
     <!-- custom - main-js -->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+
+
+    @yield('footer_script')
 
 </body>
 </html>

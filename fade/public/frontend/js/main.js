@@ -39,9 +39,9 @@
     // tooltip - start
     // --------------------------------------------------
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    var tooltipList        = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
-    });
+    });+
     // tooltip - end
     // --------------------------------------------------
 
@@ -76,7 +76,7 @@
 
     // select option - start
     // --------------------------------------------------
-    $('select').niceSelect();
+    $('.select').niceSelect();
     // select option - end
     // --------------------------------------------------
 

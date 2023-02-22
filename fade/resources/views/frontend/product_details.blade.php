@@ -73,24 +73,22 @@
                                             <div class="col col-md-6">
                                                 <div class="select_option clearfix">
                                                     <h4 class="input_title">Color *</h4>
-                                                    <select>
-                                                        <option data-display="- Please select -">Choose A Option</option>
-                                                        <option value="1">Some option</option>
-                                                        <option value="2">Another option</option>
-                                                        <option value="3" disabled>A disabled option</option>
-                                                        <option value="4">Potato</option>
+                                                    <select class="form-control" id="color_id">
+                                                        <option  value="">Choose A Option</option>
+                                                        @foreach ($available_colors as $color )
+                                                          <option value="{{ $color->rel_to_color->id }}">{{ $color->rel_to_color->color_name }}</option>  
+                                                        @endforeach                                                       
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col col-md-6">
                                                 <div class="select_option clearfix">
                                                     <h4 class="input_title">Size *</h4>
-                                                    <select>
-                                                        <option data-display="- Please select -">Choose A Option</option>
-                                                        <option value="1">Some option</option>
-                                                        <option value="2">Another option</option>
-                                                        <option value="3" disabled>A disabled option</option>
-                                                        <option value="4">Potato</option>
+                                                    <select class="form-control" id="size_id">
+                                                        <option value="">Choose A Option</option>
+                                                        
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
@@ -322,4 +320,37 @@
             ================================================== -->
 
     
+@endsection
+
+@section('footer_script')
+<script>
+    $('#color_id').change(function(){
+        let color_id = $(this).val();
+        let product_id = "{{ $productSluginfo->first()->id }}";
+        
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: 'post',
+            url: '/getsize',
+            //color & product hosse je name information gulu show kora hobe
+            //color_id & product_id hosse variable er name 
+            data: {'color_id':color_id, 'product_id': product_id},
+            success:function(data){
+                $('#size_id').html(data);
+                // alert(data);
+
+            }
+        });
+
+
+    });
+
+</script>    
 @endsection

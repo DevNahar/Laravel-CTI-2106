@@ -1,12 +1,13 @@
 <?php
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SubcategoryController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FrontendController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\CustromerRegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,11 +40,12 @@ Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard')
 //frontend
 Route::get('/', [FrontendController::class, 'index'])->name('index') ;
 Route::get('/product/details/{productSlug}', [FrontendController::class, 'p_details'])->name('product.details');
+Route::post('/getsize', [FrontendController::class, 'getsize']);
 
 
 
 
- 
+
 // Route::get('/about', [FrontendController::class, 'about'])->name('about');
 // Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 
@@ -99,5 +101,10 @@ Route::post('/add/size', [ProductController::class, 'add_size'])->name('add.size
 Route::get('inventory/{id}', [ProductController::class, 'inventory'])->name('inventory');
 Route::post('store/inventory/{id}', [ProductController::class, 'addinventory'])->name('store.inventory');
 //product end
+
+
+//customer
+Route::get('/customer/register', [CustromerRegisterController::class, 'custromer_register'])->name('customer.login.register');
+Route::post('/customer/register', [CustromerRegisterController::class, 'custromer_register_store'])->name('custromer.register.store');
 
 
