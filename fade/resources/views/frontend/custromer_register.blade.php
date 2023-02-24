@@ -19,7 +19,10 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
+                    @if (session('register'))
+                    <div class="alert alert-success">{{ session('register') }}</div>
 
+                    @endif
                     <ul class="nav register_tabnav ul_li_center" role="tablist">
                         <li role="presentation">
                             <button class="active" data-bs-toggle="tab" data-bs-target="#signin_tab" type="button" role="tab" aria-controls="signin_tab" aria-selected="true">Sign In</button>
@@ -60,6 +63,7 @@
 
                         <div class="tab-pane fade" id="signup_tab" role="tabpanel">
                             <form action="{{ route('custromer.register.store') }}" method="POST">
+                                @csrf
                                 <div class="form_item_wrap">
                                     <h3 class="input_title">Name*</h3>
                                     <div class="form_item">

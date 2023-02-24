@@ -105,6 +105,6 @@ Route::post('store/inventory/{id}', [ProductController::class, 'addinventory'])-
 
 //customer
 Route::get('/customer/register', [CustromerRegisterController::class, 'custromer_register'])->name('customer.login.register');
-Route::post('/customer/register', [CustromerRegisterController::class, 'custromer_register_store'])->name('custromer.register.store');
+Route::post('/customer/register/store', [CustromerRegisterController::class, 'custromer_register_store'])->name('custromer.register.store');
 
 
