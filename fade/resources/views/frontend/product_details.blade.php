@@ -21,14 +21,14 @@
                         <div class="col col-lg-6">
                             <div class="product_details_image">
                                 <div class="details_image_carousel">
-                                    
+
                                     @foreach ($thumbnails as $thumbnail)
                                         <div class="slider_item">
                                             <img src="{{ asset('uploads/products/thumbnails/'.$thumbnail->thumbnail) }}" alt="image_not_found">
                                         </div>
-                                     @endforeach                                   
-                                    
-                                    
+                                     @endforeach
+
+
                                 </div>
 
                                 <div class="details_image_carousel_nav">
@@ -37,7 +37,7 @@
                                             <img src="{{ asset('uploads/products/thumbnails/'.$thumbnail->thumbnail) }}" alt="image_not_found">
                                         </div>
                                      @endforeach
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -58,12 +58,12 @@
                                 </div>
 
                                 <div class="item_price">
-                                    <span>TK {{ $productSluginfo->first()->after_discount }}</span>
+                                    <span>TK <span id="price">{{ $productSluginfo->first()->after_discount }}</span></span>
                                     @if($productSluginfo->first()->discount)
                                     <del>TK {{ $productSluginfo->first()->product_price }}</del>
                                     @else
                                     @endif
-                                    
+
                                 </div>
                                 <hr>
 
@@ -76,9 +76,9 @@
                                                     <select class="form-control" id="color_id">
                                                         <option  value="">Choose A Option</option>
                                                         @foreach ($available_colors as $color )
-                                                          <option value="{{ $color->rel_to_color->id }}">{{ $color->rel_to_color->color_name }}</option>  
-                                                        @endforeach                                                       
-                                                        
+                                                          <option value="{{ $color->rel_to_color->id }}">{{ $color->rel_to_color->color_name }}</option>
+                                                        @endforeach
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -87,8 +87,8 @@
                                                     <h4 class="input_title">Size *</h4>
                                                     <select class="form-control" id="size_id">
                                                         <option value="">Choose A Option</option>
-                                                        
-                                                        
+
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -105,7 +105,7 @@
                                                 <i class="fal fa-plus"></i>
                                             </button>
                                         </div>
-                                        <div class="total_price">Total: $620,99</div>
+                                        <div class="total_price">Total: Tk <span id="total">{{ $productSluginfo->first()->after_discount }}</span></div>
                                     </div>
 
                                     <ul class="default_btns_group ul_li">
@@ -138,7 +138,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="description_tab" role="tabpanel">
                                 <p>{!! $productSluginfo->first()->long_desp !!}</p>
-                                
+
                             </div>
 
                             <div class="tab-pane fade" id="additional_information_tab" role="tabpanel">
@@ -277,7 +277,7 @@
                                 </div>
                                 <div class="product-area row clearfix">
                                     @forelse ($related_products as $related_product)
-                                                                      
+
                                         <div class="grid col-lg-3">
                                             <div class="product-pic">
                                                 <img src="{{ asset('uploads\products\preview_image/'.$related_product->preview) }}" alt>
@@ -311,7 +311,7 @@
                                         <h4>No Product Data Found</h4>
                                     @endforelse
                                 </div>
-                            </div>        
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -319,15 +319,18 @@
             <!-- related_products_section - end
             ================================================== -->
 
-    
+
 @endsection
 
 @section('footer_script')
+
+{{--  js code for color & size --}}
+
 <script>
     $('#color_id').change(function(){
         let color_id = $(this).val();
         let product_id = "{{ $productSluginfo->first()->id }}";
-        
+
 
 
         $.ajaxSetup({
@@ -340,7 +343,7 @@
             type: 'post',
             url: '/getsize',
             //color & product hosse je name information gulu show kora hobe
-            //color_id & product_id hosse variable er name 
+            //color_id & product_id hosse variable er name
             data: {'color_id':color_id, 'product_id': product_id},
             success:function(data){
                 $('#size_id').html(data);
@@ -352,5 +355,28 @@
 
     });
 
-</script>    
+</script>
+
+{{--  js code for product quantity increment & decrement --}}
+<script>
+    let quantity =$('.input_number').val();
+    let price = $('#price').html();
+
+    $('.input_number_increment').click(function(){
+        quantity++;
+        $('.input_number').val(quantity);
+        let total = price*quantity;
+        $('#total').html(total);
+    })
+    $('.input_number_decrement').click(function(){
+        if(quantity>1){
+            quantity--;
+        }
+        $('.input_number').val(quantity);
+        let total = price*quantity;
+        $('#total').html(total);
+    })
+</script>
+{{--  js code for add to card --}}
+
 @endsection

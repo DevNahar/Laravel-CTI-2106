@@ -34,12 +34,13 @@
 
                     <div class="register_wrap tab-content">
                         <div class="tab-pane fade show active" id="signin_tab" role="tabpanel">
-                            <form action="#">
+                            <form action="{{ route('customer.login') }}" method="POST" >
+                                @csrf
                                 <div class="form_item_wrap">
                                     <h3 class="input_title">Email*</h3>
                                     <div class="form_item">
                                         <label for="username_input"><i class="fas fa-user"></i></label>
-                                        <input id="username_input" type="text" name="email" placeholder="Email">
+                                        <input id="username_input" type="email" name="email" placeholder="Email">
                                     </div>
                                 </div>
 

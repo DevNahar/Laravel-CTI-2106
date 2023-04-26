@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerLoginController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\CustromerRegisterController;
@@ -106,5 +107,6 @@ Route::post('store/inventory/{id}', [ProductController::class, 'addinventory'])-
 //customer
 Route::get('/customer/register', [CustromerRegisterController::class, 'custromer_register'])->name('customer.login.register');
 Route::post('/customer/register/store', [CustromerRegisterController::class, 'custromer_register_store'])->name('custromer.register.store');
-
+Route::post('/customer/login', [CustomerLoginController::class, 'custromer_login'])->name('customer.login');
+Route::get('/customer/logout', [CustomerLoginController::class, 'custromer_logout'])->name('customer.logout');
 

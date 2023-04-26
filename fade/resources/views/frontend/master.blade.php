@@ -188,9 +188,25 @@
                         <div class="col col-md-3">
                             <ul class="header_icons_group ul_li_right">
                                  <li>
+                                    @auth('customerlogin')
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{ Auth::guard('customerlogin')->user()->name }}
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
+                                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                                          <li><a class="dropdown-item" href="{{ route('customer.logout') }}">Logout</a></li>
+                                        </ul>
+                                      </div>
+
+                                    @else
                                     <a href="{{ route('customer.login.register') }}">Login/Register</a>
-                                    
+
+                                    @endauth
+
+
+
                                 </li>
 
                                 <li>
